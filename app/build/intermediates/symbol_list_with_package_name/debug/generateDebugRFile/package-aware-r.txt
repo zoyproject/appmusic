@@ -1,2 +1,0 @@
-com.zoy.musicplayed
-string app_name
