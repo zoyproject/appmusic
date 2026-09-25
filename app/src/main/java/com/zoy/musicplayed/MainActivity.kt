@@ -1643,7 +1643,7 @@ fun QueueSheet(
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .heightIn(max = 300.dp), // <-- Ditambahkan pembatas tinggi agar tidak crash
+                        .height(300.dp),
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     items(playerState.queue) { song ->
