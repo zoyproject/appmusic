@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.zoy.musicplayed.app-mergeDebugResources-1:/values-v30/values-v30.xml",
+            "map": [
+                {
+                    "source": "/root/.gradle/caches/9.6.0/transforms/8d85b8835a854f7c3a6c69b17e9c5e45/transformed/material3/res/values-v30/values-v30.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "72",
+                        "endOffsets": "123"
+                    }
+                }
+            ]
+        }
+    ]
+}
