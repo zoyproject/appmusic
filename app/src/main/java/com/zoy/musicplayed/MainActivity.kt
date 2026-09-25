@@ -1625,46 +1625,34 @@ fun SettingClickableRow(
 // DIALOGS
 // -----------------------------------------------------------------------------
 
-@Composable
-fun AudioQualityDialog(
-    currentQuality: String,
+@@Composable
+fun QueueSheet(
+    playerState: PlayerState,
     onDismiss: () -> Unit,
-    onSelected: (String) -> Unit
+    onPlaySong: (Song) -> Unit
 ) {
-    val qualities = listOf(
-        "Low",
-        "Standard",
-        "High",
-        "Very High"
-    )
-
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
-            Text("Audio quality")
+            Text("Queue")
         },
         text = {
-            Column {
-                qualities.forEach { quality ->
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable {
-                                onSelected(quality)
-                            }
-                            .padding(vertical = 12.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        androidx.compose.material3.RadioButton(
-                            selected = quality == currentQuality,
+            if (playerState.queue.isEmpty()) {
+                Text("Queue is empty.")
+            } else {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(max = 300.dp), // <-- Ditambahkan pembatas tinggi agar tidak crash
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    items(playerState.queue) { song ->
+                        SongListItem(
+                            song = song,
                             onClick = {
-                                onSelected(quality)
+                                onPlaySong(song)
                             }
                         )
-
-                        Spacer(modifier = Modifier.width(8.dp))
-
-                        Text(quality)
                     }
                 }
             }
@@ -1676,6 +1664,7 @@ fun AudioQualityDialog(
         }
     )
 }
+
 
 @Composable
 fun SleepTimerDialog(
